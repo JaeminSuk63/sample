@@ -7,7 +7,7 @@ interface Repository {
 
     suspend fun deleteSearchHistory(item: SearchHistoryItem)
 
-    fun getSearchHistory(): List<SearchHistoryItem>
+    fun getSearchHistory(): Flow<List<SearchHistoryItem>>
 
     suspend fun getApiVersion(): Int?
 

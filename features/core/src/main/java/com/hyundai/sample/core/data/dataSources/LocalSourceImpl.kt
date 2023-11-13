@@ -2,6 +2,7 @@ package com.hyundai.sample.core.data.dataSources
 
 import com.hyundai.sample.core.data.db.Database
 import com.hyundai.sample.core.data.db.toDbEntity
+import com.hyundai.sample.core.data.db.toEntity
 import com.hyundai.sample.core.domain.SearchHistoryItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -16,6 +17,6 @@ class LocalSourceImpl(private val database: Database) : LocalSource {
     }
 
     override fun getSearchHistory(): Flow<List<SearchHistoryItem>> {
-        return database.searchHistoryDao().getAll().map { dbEntity -> dbEntity.toEntity() }
+        return database.searchHistoryDao().getAll().map { it.toEntity() }
     }
 }

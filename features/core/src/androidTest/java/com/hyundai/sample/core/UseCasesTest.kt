@@ -56,21 +56,26 @@ class UseCasesTest {
     )
 
     @Test
-    fun addSearchHistoryTest() {
-        val expected = 0
-        val actual = 1
-        val item = SearchHistoryItem()
+    fun addSearchHistoryTest() = runBlocking {
+        val item = SearchHistoryItem(
+            keyword = "Add"
+        )
         useCases.addSearchHistory(item)
+    }
+
+    @Test
+    fun getSearchHistoryTest() = runBlocking {
+        val expected = "Add"
+        val data = useCases.getSearchHistory().first()
+        val actual = data[0].keyword
         assertEquals(expected, actual)
     }
 
     @Test
-    fun deleteSearchHistoryTest() {
-        val expected = 0
-        val actual = 1
-        val item = SearchHistoryItem()
-        useCases.deleteSearchHistory(item)
-        assertEquals(expected, actual)
+    fun deleteSearchHistoryTest() = runBlocking {
+        val data = useCases.getSearchHistory().first()
+        val actual = data[0]
+        useCases.deleteSearchHistory(actual)
     }
 
     @Test
@@ -84,14 +89,6 @@ class UseCasesTest {
     fun getIgnitionTest() = runBlocking {
         val expected = 0
         val actual = useCases.getIgnitionState().first()
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun getSearchHistoryTest() {
-        val expected = 0
-        val actual = 1
-        useCases.getSearchHistory()
         assertEquals(expected, actual)
     }
 
