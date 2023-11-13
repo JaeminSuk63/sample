@@ -3,6 +3,12 @@ package com.hyundai.sample.core
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.hyundai.sample.core.data.RepositoryImpl
+import com.hyundai.sample.core.data.dataSources.LocalSource
+import com.hyundai.sample.core.data.dataSources.LocalSourceImpl
+import com.hyundai.sample.core.data.dataSources.RemoteSource
+import com.hyundai.sample.core.data.dataSources.RemoteSourceImpl
+import com.hyundai.sample.core.data.dataSources.VehicleSource
+import com.hyundai.sample.core.data.dataSources.VehicleSourceImpl
 import com.hyundai.sample.core.domain.Repository
 import com.hyundai.sample.core.domain.SearchHistoryItem
 import com.hyundai.sample.core.domain.UseCases
@@ -25,7 +31,10 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class UseCasesTest {
-    private val repository: Repository = RepositoryImpl()
+    private val localSource: LocalSource = LocalSourceImpl()
+    private val remoteSource: RemoteSource = RemoteSourceImpl()
+    private val vehicleSource: VehicleSource = VehicleSourceImpl()
+    private val repository: Repository = RepositoryImpl(localSource, remoteSource, vehicleSource)
     private val useCases = UseCases(
         addSearchHistory = AddSearchHistory(repository),
         deleteSearchHistory = DeleteSearchHistory(repository),

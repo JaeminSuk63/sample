@@ -1,23 +1,26 @@
 package com.hyundai.sample.core.data
 
+import com.hyundai.sample.core.data.dataSources.LocalSource
+import com.hyundai.sample.core.data.dataSources.RemoteSource
+import com.hyundai.sample.core.data.dataSources.VehicleSource
 import com.hyundai.sample.core.domain.Repository
 import com.hyundai.sample.core.domain.SearchHistoryItem
-import kotlinx.coroutines.flow.flow
 
-class RepositoryImpl : Repository {
-    override fun addSearchHistory(item: SearchHistoryItem) {
+class RepositoryImpl(
+    private val localSource: LocalSource,
+    private val remoteSource: RemoteSource,
+    private val vehicleSource: VehicleSource,
+) : Repository {
+    override fun addSearchHistory(item: SearchHistoryItem) = localSource.addSearchHistory(item)
 
-    }
+    override fun deleteSearchHistory(item: SearchHistoryItem) =
+        localSource.deleteSearchHistory(item)
 
-    override fun deleteSearchHistory(item: SearchHistoryItem) {
+    override fun getSearchHistory() = localSource.getSearchHistory()
 
-    }
+    override fun getApiVersion() = remoteSource.getApiVersion()
 
-    override fun getApiVersion() = 0
+    override fun getIgnitionState() = vehicleSource.getIgnitionState()
 
-    override fun getIgnitionState() = flow<Int?> { emit(0) }
-
-    override fun getSearchHistory() = emptyList<SearchHistoryItem>()
-
-    override fun isParkingBrakeOn() = false
+    override fun isParkingBrakeOn() = vehicleSource.isParkingBrakeOn()
 }
