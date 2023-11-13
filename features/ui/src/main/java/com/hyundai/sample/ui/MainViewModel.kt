@@ -41,16 +41,30 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getApiVersion() {
-        TODO("Not yet implemented")
+    private fun getApiVersion() = viewModelScope.launch {
+        _apiVersion.value = "Version: " + useCases.getApiVersion().toString()
     }
 
-    private fun getParkingState() {
-        TODO("Not yet implemented")
+    private fun getParkingState() = viewModelScope.launch {
+        if (useCases.isParkingBrakeOn()) {
+            _parkingBrakeState.value = "Parking brake On"
+        } else {
+            _parkingBrakeState.value = "Parking brake OFF"
+        }
     }
 
-    private fun getIgnitionState() {
-        TODO("Not yet implemented")
+    private fun getIgnitionState() = viewModelScope.launch {
+        useCases.getIgnitionState().collect {
+            _ignitionState.value = when (it) {
+                0 -> "Undefined"
+                1 -> "Lock"
+                2 -> "IGN Off"
+                3 -> "ACC on"
+                4 -> "IGN on"
+                5 -> "IGN Start"
+                else -> ""
+            }
+        }
     }
 
 
