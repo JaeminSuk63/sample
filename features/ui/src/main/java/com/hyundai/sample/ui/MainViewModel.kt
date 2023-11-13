@@ -35,6 +35,14 @@ class MainViewModel @Inject constructor(
         getSearchHistoryList()
     }
 
+    fun addSearchHistory(item: SearchHistoryItem) = viewModelScope.launch {
+        useCases.addSearchHistory(item)
+    }
+
+    fun deleteSearchHistory(item: SearchHistoryItem) = viewModelScope.launch {
+        useCases.deleteSearchHistory(item)
+    }
+
     private fun getSearchHistoryList() = viewModelScope.launch {
         useCases.getSearchHistory().collect {
             _searchHistoryList.value = it
