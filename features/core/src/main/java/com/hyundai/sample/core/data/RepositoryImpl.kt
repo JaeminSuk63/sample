@@ -11,9 +11,10 @@ class RepositoryImpl(
     private val remoteSource: RemoteSource,
     private val vehicleSource: VehicleSource,
 ) : Repository {
-    override fun addSearchHistory(item: SearchHistoryItem) = localSource.addSearchHistory(item)
+    override suspend fun addSearchHistory(item: SearchHistoryItem) =
+        localSource.addSearchHistory(item)
 
-    override fun deleteSearchHistory(item: SearchHistoryItem) =
+    override suspend fun deleteSearchHistory(item: SearchHistoryItem) =
         localSource.deleteSearchHistory(item)
 
     override fun getSearchHistory() = localSource.getSearchHistory()

@@ -3,9 +3,9 @@ package com.hyundai.sample.core.domain
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    fun addSearchHistory(item: SearchHistoryItem)
+    suspend fun addSearchHistory(item: SearchHistoryItem)
 
-    fun deleteSearchHistory(item: SearchHistoryItem)
+    suspend fun deleteSearchHistory(item: SearchHistoryItem)
 
     fun getSearchHistory(): List<SearchHistoryItem>
 

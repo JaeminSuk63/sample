@@ -1,17 +1,21 @@
 package com.hyundai.sample.core.data.dataSources
 
+import com.hyundai.sample.core.data.db.Database
+import com.hyundai.sample.core.data.db.toDbEntity
 import com.hyundai.sample.core.domain.SearchHistoryItem
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
-class LocalSourceImpl : LocalSource {
-    override fun addSearchHistory(item: SearchHistoryItem) {
-        TODO("Not yet implemented")
+class LocalSourceImpl(private val database: Database) : LocalSource {
+    override suspend fun addSearchHistory(item: SearchHistoryItem) {
+        database.searchHistoryDao().insertItem(item.toDbEntity())
     }
 
-    override fun deleteSearchHistory(item: SearchHistoryItem) {
-        TODO("Not yet implemented")
+    override suspend fun deleteSearchHistory(item: SearchHistoryItem) {
+        database.searchHistoryDao().deleteItem(item.toDbEntity())
     }
 
-    override fun getSearchHistory(): List<SearchHistoryItem> {
-        TODO("Not yet implemented")
+    override fun getSearchHistory(): Flow<List<SearchHistoryItem>> {
+        return database.searchHistoryDao().getAll().map { dbEntity -> dbEntity.toEntity() }
     }
 }

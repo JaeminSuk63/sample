@@ -1,5 +1,6 @@
 package com.hyundai.sample.core
 
+import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.hyundai.sample.core.data.RepositoryImpl
@@ -10,6 +11,7 @@ import com.hyundai.sample.core.data.dataSources.RemoteSource
 import com.hyundai.sample.core.data.dataSources.RemoteSourceImpl
 import com.hyundai.sample.core.data.dataSources.VehicleSource
 import com.hyundai.sample.core.data.dataSources.VehicleSourceImpl
+import com.hyundai.sample.core.data.db.Database
 import com.hyundai.sample.core.domain.Repository
 import com.hyundai.sample.core.domain.SearchHistoryItem
 import com.hyundai.sample.core.domain.UseCases
@@ -36,7 +38,7 @@ import java.util.concurrent.TimeUnit
  */
 @RunWith(AndroidJUnit4::class)
 class UseCasesTest {
-    private val localSource: LocalSource = LocalSourceImpl()
+    private val localSource: LocalSource = LocalSourceImpl(getDatabase())
     private val remoteSource: RemoteSource = RemoteSourceImpl(getApi())
     private val vehicleSource: VehicleSource = VehicleSourceImpl()
     private val repository: Repository = RepositoryImpl(
@@ -100,13 +102,6 @@ class UseCasesTest {
         assertEquals(expected, actual)
     }
 
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.hyundai.sample.core.test", appContext.packageName)
-    }
-
     private fun getApi(): Api {
         val okHttpClient = OkHttpClient.Builder()
             .readTimeout(7, TimeUnit.SECONDS)
@@ -120,5 +115,12 @@ class UseCasesTest {
             .build()
 
         return retrofit.create(Api::class.java)
+    }
+
+    private fun getDatabase(): Database {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        return Room.databaseBuilder(context, Database::class.java, "local_db")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }

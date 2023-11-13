@@ -1,11 +1,12 @@
 package com.hyundai.sample.core.data.dataSources
 
 import com.hyundai.sample.core.domain.SearchHistoryItem
+import kotlinx.coroutines.flow.Flow
 
 interface LocalSource {
-    fun addSearchHistory(item: SearchHistoryItem)
+    suspend fun addSearchHistory(item: SearchHistoryItem)
 
-    fun deleteSearchHistory(item: SearchHistoryItem)
+    suspend fun deleteSearchHistory(item: SearchHistoryItem)
 
-    fun getSearchHistory(): List<SearchHistoryItem>
+    fun getSearchHistory(): Flow<List<SearchHistoryItem>>
 }

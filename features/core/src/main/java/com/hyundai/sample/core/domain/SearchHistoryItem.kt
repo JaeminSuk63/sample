@@ -1,3 +1,7 @@
 package com.hyundai.sample.core.domain
 
-class SearchHistoryItem
+data class SearchHistoryItem(
+    val key: Long = 0,
+    val keyword: String,
+    val createdDateTime: Long = System.currentTimeMillis()
+)
