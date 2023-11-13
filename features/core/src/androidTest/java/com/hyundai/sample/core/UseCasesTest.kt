@@ -34,7 +34,11 @@ class UseCasesTest {
     private val localSource: LocalSource = LocalSourceImpl()
     private val remoteSource: RemoteSource = RemoteSourceImpl()
     private val vehicleSource: VehicleSource = VehicleSourceImpl()
-    private val repository: Repository = RepositoryImpl(localSource, remoteSource, vehicleSource)
+    private val repository: Repository = RepositoryImpl(
+        localSource,
+        remoteSource,
+        vehicleSource,
+    )
     private val useCases = UseCases(
         addSearchHistory = AddSearchHistory(repository),
         deleteSearchHistory = DeleteSearchHistory(repository),
