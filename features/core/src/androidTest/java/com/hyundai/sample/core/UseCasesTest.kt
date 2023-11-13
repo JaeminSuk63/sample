@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Retrofit
@@ -54,6 +55,11 @@ class UseCasesTest {
         getSearchHistory = GetSearchHistory(repository),
         isParkingBrakeOn = IsParkingBrakeOn(repository),
     )
+
+    @Before
+    fun setup() {
+
+    }
 
     @Test
     fun addSearchHistoryTest() = runBlocking {
