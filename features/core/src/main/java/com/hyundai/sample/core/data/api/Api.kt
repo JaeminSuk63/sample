@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface Api {
 
     @GET("automation/modes/version")
-    fun fetchApiVersion(): Response<VersionDto>
+    suspend fun fetchApiVersion(): Response<VersionDto>
 }

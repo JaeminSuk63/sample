@@ -18,7 +18,7 @@ class RepositoryImpl(
 
     override fun getSearchHistory() = localSource.getSearchHistory()
 
-    override fun getApiVersion() = remoteSource.getApiVersion()
+    override suspend fun getApiVersion() = remoteSource.getApiVersion()
 
     override fun getIgnitionState() = vehicleSource.getIgnitionState()
 

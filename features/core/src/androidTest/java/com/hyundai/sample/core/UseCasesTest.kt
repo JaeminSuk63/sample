@@ -3,6 +3,7 @@ package com.hyundai.sample.core
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.hyundai.sample.core.data.RepositoryImpl
+import com.hyundai.sample.core.data.api.Api
 import com.hyundai.sample.core.data.dataSources.LocalSource
 import com.hyundai.sample.core.data.dataSources.LocalSourceImpl
 import com.hyundai.sample.core.data.dataSources.RemoteSource
@@ -20,9 +21,13 @@ import com.hyundai.sample.core.domain.useCases.GetSearchHistory
 import com.hyundai.sample.core.domain.useCases.IsParkingBrakeOn
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import okhttp3.OkHttpClient
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -32,7 +37,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class UseCasesTest {
     private val localSource: LocalSource = LocalSourceImpl()
-    private val remoteSource: RemoteSource = RemoteSourceImpl()
+    private val remoteSource: RemoteSource = RemoteSourceImpl(getApi())
     private val vehicleSource: VehicleSource = VehicleSourceImpl()
     private val repository: Repository = RepositoryImpl(
         localSource,
@@ -67,8 +72,8 @@ class UseCasesTest {
     }
 
     @Test
-    fun getApiVersionTest() {
-        val expected = 0
+    fun getApiVersionTest() = runBlocking {
+        val expected = 5
         val actual = useCases.getApiVersion()
         assertEquals(expected, actual)
     }
@@ -100,5 +105,20 @@ class UseCasesTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.hyundai.sample.core.test", appContext.packageName)
+    }
+
+    private fun getApi(): Api {
+        val okHttpClient = OkHttpClient.Builder()
+            .readTimeout(7, TimeUnit.SECONDS)
+            .connectTimeout(7, TimeUnit.SECONDS)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://14rgey5i33.execute-api.ap-northeast-2.amazonaws.com")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(Api::class.java)
     }
 }

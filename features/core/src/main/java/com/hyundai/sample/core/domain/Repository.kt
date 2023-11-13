@@ -9,7 +9,7 @@ interface Repository {
 
     fun getSearchHistory(): List<SearchHistoryItem>
 
-    fun getApiVersion(): Int?
+    suspend fun getApiVersion(): Int?
 
     fun getIgnitionState(): Flow<Int?>
 
