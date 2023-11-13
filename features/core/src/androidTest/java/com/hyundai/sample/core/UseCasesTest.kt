@@ -39,9 +39,10 @@ import java.util.concurrent.TimeUnit
  */
 @RunWith(AndroidJUnit4::class)
 class UseCasesTest {
+    val context = InstrumentationRegistry.getInstrumentation().targetContext
     private val localSource: LocalSource = LocalSourceImpl(getDatabase())
     private val remoteSource: RemoteSource = RemoteSourceImpl(getApi())
-    private val vehicleSource: VehicleSource = VehicleSourceImpl()
+    private val vehicleSource: VehicleSource = VehicleSourceImpl(context)
     private val repository: Repository = RepositoryImpl(
         localSource,
         remoteSource,
@@ -93,7 +94,7 @@ class UseCasesTest {
 
     @Test
     fun getIgnitionTest() = runBlocking {
-        val expected = 0
+        val expected = 4
         val actual = useCases.getIgnitionState().first()
         assertEquals(expected, actual)
     }
