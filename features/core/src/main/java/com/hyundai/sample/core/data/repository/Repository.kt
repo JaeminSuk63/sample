@@ -1,5 +1,6 @@
-package com.hyundai.sample.core.domain
+package com.hyundai.sample.core.data.repository
 
+import com.hyundai.sample.core.domain.SearchHistoryItem
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {

@@ -19,7 +19,7 @@ import java.util.Date
 
 @Composable
 fun SearchHistoryList(items: List<SearchHistoryItem>, onDeleteItem: (SearchHistoryItem) -> Unit) {
-    val pattern = SimpleDateFormat("yyy-MM-dd HH:mm:ss")
+    val pattern = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     LazyColumn(
         modifier = Modifier.fillMaxSize()

@@ -3,7 +3,6 @@ package com.hyundai.sample.core
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.hyundai.sample.core.data.RepositoryImpl
 import com.hyundai.sample.core.data.api.Api
 import com.hyundai.sample.core.data.dataSources.LocalSource
 import com.hyundai.sample.core.data.dataSources.LocalSourceImpl
@@ -12,7 +11,8 @@ import com.hyundai.sample.core.data.dataSources.RemoteSourceImpl
 import com.hyundai.sample.core.data.dataSources.VehicleSource
 import com.hyundai.sample.core.data.dataSources.VehicleSourceImpl
 import com.hyundai.sample.core.data.db.Database
-import com.hyundai.sample.core.domain.Repository
+import com.hyundai.sample.core.data.repository.Repository
+import com.hyundai.sample.core.data.repository.RepositoryImpl
 import com.hyundai.sample.core.domain.SearchHistoryItem
 import com.hyundai.sample.core.domain.UseCases
 import com.hyundai.sample.core.domain.useCases.AddSearchHistory

@@ -13,7 +13,9 @@ class VehicleSourceImpl(context: Context) : VehicleSource {
 
     private val carPropertyManager =
         Car.createCar(context).getCarManager(Car.PROPERTY_SERVICE) as CarPropertyManager
+
     private var ignitionState = -1
+
 
     override fun getIgnitionState(): Flow<Int?> = flow {
         while (true) {

@@ -1,9 +1,8 @@
-package com.hyundai.sample.core.data
+package com.hyundai.sample.core.data.repository
 
 import com.hyundai.sample.core.data.dataSources.LocalSource
 import com.hyundai.sample.core.data.dataSources.RemoteSource
 import com.hyundai.sample.core.data.dataSources.VehicleSource
-import com.hyundai.sample.core.domain.Repository
 import com.hyundai.sample.core.domain.SearchHistoryItem
 
 class RepositoryImpl(

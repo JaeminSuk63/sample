@@ -1,6 +1,6 @@
 package com.hyundai.sample.core.di
 
-import com.hyundai.sample.core.domain.Repository
+import com.hyundai.sample.core.data.repository.Repository
 import com.hyundai.sample.core.domain.UseCases
 import com.hyundai.sample.core.domain.useCases.AddSearchHistory
 import com.hyundai.sample.core.domain.useCases.DeleteSearchHistory
@@ -15,7 +15,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-class UseCasesModule {
+object UseCasesModule {
 
     @Provides
     fun provideUseCases(repository: Repository) = UseCases(
