@@ -1,16 +1,13 @@
 package com.hyundai.sample.core
 
-import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.hyundai.sample.core.data.api.Api
 import com.hyundai.sample.core.data.dataSources.LocalSource
 import com.hyundai.sample.core.data.dataSources.LocalSourceImpl
 import com.hyundai.sample.core.data.dataSources.RemoteSource
 import com.hyundai.sample.core.data.dataSources.RemoteSourceImpl
 import com.hyundai.sample.core.data.dataSources.VehicleSource
 import com.hyundai.sample.core.data.dataSources.VehicleSourceImpl
-import com.hyundai.sample.core.data.db.Database
 import com.hyundai.sample.core.data.repository.Repository
 import com.hyundai.sample.core.data.repository.RepositoryImpl
 import com.hyundai.sample.core.domain.SearchHistoryItem
@@ -23,14 +20,10 @@ import com.hyundai.sample.core.domain.useCases.GetSearchHistory
 import com.hyundai.sample.core.domain.useCases.IsParkingBrakeOn
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import okhttp3.OkHttpClient
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -39,9 +32,9 @@ import java.util.concurrent.TimeUnit
  */
 @RunWith(AndroidJUnit4::class)
 class UseCasesTest {
-    val context = InstrumentationRegistry.getInstrumentation().targetContext
-    private val localSource: LocalSource = LocalSourceImpl(getDatabase())
-    private val remoteSource: RemoteSource = RemoteSourceImpl(getApi())
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+    private val localSource: LocalSource = LocalSourceImpl(TestHelper.getDatabase())
+    private val remoteSource: RemoteSource = RemoteSourceImpl(TestHelper.getApi())
     private val vehicleSource: VehicleSource = VehicleSourceImpl(context)
     private val repository: Repository = RepositoryImpl(
         localSource,
@@ -59,7 +52,6 @@ class UseCasesTest {
 
     @Before
     fun setup() {
-
     }
 
     @Test
@@ -104,27 +96,5 @@ class UseCasesTest {
         val expected = false
         val actual = useCases.isParkingBrakeOn()
         assertEquals(expected, actual)
-    }
-
-    private fun getApi(): Api {
-        val okHttpClient = OkHttpClient.Builder()
-            .readTimeout(7, TimeUnit.SECONDS)
-            .connectTimeout(7, TimeUnit.SECONDS)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://14rgey5i33.execute-api.ap-northeast-2.amazonaws.com")
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        return retrofit.create(Api::class.java)
-    }
-
-    private fun getDatabase(): Database {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        return Room.databaseBuilder(context, Database::class.java, "local_db")
-            .fallbackToDestructiveMigration()
-            .build()
     }
 }
