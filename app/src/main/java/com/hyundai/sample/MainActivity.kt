@@ -1,5 +1,6 @@
 package com.hyundai.sample
 
+import LeftSideTabBarNavigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,7 +13,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SampleTheme {
-                Navigation()
+                //Navigation()
+                LeftSideTabBarNavigation()
             }
         }
     }
