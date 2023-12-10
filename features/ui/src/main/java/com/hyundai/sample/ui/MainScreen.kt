@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.hyundai.sample.core.domain.SearchHistoryItem
+import com.hyundai.sample.entity.SearchHistoryItem
 
 @Composable
 fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {

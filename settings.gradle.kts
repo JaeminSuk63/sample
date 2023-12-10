@@ -16,4 +16,6 @@ dependencyResolutionManagement {
 rootProject.name = "sample"
 include(":app")
 include(":features:ui")
-include(":features:core")
+include(":features:data")
+include(":features:domain")
+include(":features:entity")

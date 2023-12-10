@@ -2,8 +2,7 @@ package com.hyundai.sample.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hyundai.sample.core.domain.SearchHistoryItem
-import com.hyundai.sample.core.domain.UseCases
+import com.hyundai.sample.entity.SearchHistoryItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val useCases: UseCases,
+    private val useCases: com.hyundai.sample.domain.UseCases,
 ) : ViewModel() {
 
     private val _ignitionState: MutableStateFlow<String?> = MutableStateFlow(null)
@@ -26,7 +25,8 @@ class MainViewModel @Inject constructor(
 
     private val _searchHistoryList: MutableStateFlow<List<SearchHistoryItem>> =
         MutableStateFlow(emptyList())
-    val searchHistoryList: StateFlow<List<SearchHistoryItem>> = _searchHistoryList
+    val searchHistoryList: StateFlow<List<SearchHistoryItem>> =
+        _searchHistoryList
 
     init {
         getIgnitionState()
@@ -35,13 +35,15 @@ class MainViewModel @Inject constructor(
         getSearchHistoryList()
     }
 
-    fun addSearchHistory(item: SearchHistoryItem) = viewModelScope.launch {
-        useCases.addSearchHistory(item)
-    }
+    fun addSearchHistory(item: SearchHistoryItem) =
+        viewModelScope.launch {
+            useCases.addSearchHistory(item)
+        }
 
-    fun deleteSearchHistory(item: SearchHistoryItem) = viewModelScope.launch {
-        useCases.deleteSearchHistory(item)
-    }
+    fun deleteSearchHistory(item: SearchHistoryItem) =
+        viewModelScope.launch {
+            useCases.deleteSearchHistory(item)
+        }
 
     private fun getSearchHistoryList() = viewModelScope.launch {
         useCases.getSearchHistory().collect {

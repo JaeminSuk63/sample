@@ -13,12 +13,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hyundai.sample.core.domain.SearchHistoryItem
+import com.hyundai.sample.entity.SearchHistoryItem
 import java.text.SimpleDateFormat
 import java.util.Date
 
 @Composable
-fun SearchHistoryList(items: List<SearchHistoryItem>, onDeleteItem: (SearchHistoryItem) -> Unit) {
+fun SearchHistoryList(
+    items: List<SearchHistoryItem>,
+    onDeleteItem: (SearchHistoryItem) -> Unit
+) {
     val pattern = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     LazyColumn(
