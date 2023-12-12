@@ -17,7 +17,8 @@
             <option value="$PROJECT_DIR$/data/db" />
             <option value="$PROJECT_DIR$/data/repository" />
             <option value="$PROJECT_DIR$/feature" />
-            <option value="$PROJECT_DIR$/feature/domain" />
+            <option value="$PROJECT_DIR$/feature/launch" />
+            <option value="$PROJECT_DIR$/feature/sample_domain" />
             <option value="$PROJECT_DIR$/feature/ui" />
             <option value="$PROJECT_DIR$/shared" />
             <option value="$PROJECT_DIR$/shared/entity" />
