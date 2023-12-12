@@ -21,24 +21,27 @@ fun LeftNavigation(
     Column(
         modifier = Modifier
             .fillMaxHeight()
-            .width(400.dp)
+            .width(130.dp)
             .background(MaterialTheme.colorScheme.primary)
             .verticalScroll(enabled = true, state = rememberScrollState())
     ) {
         NavItem(
-            label = "Main",
+            label = "Home",
+            icon = R.drawable.ic_home,
             selected = navBackStackEntry?.destination?.route == "main",
             onClick = { navController.navigate("main") }
         )
 
         NavItem(
             label = "Vehicle",
+            icon = R.drawable.ic_car,
             selected = navBackStackEntry?.destination?.route == "vehicle",
             onClick = { navController.navigate("vehicle") }
         )
 
         NavItem(
             label = "Version",
+            icon = R.drawable.ic_cloud,
             selected = navBackStackEntry?.destination?.route == "version"
                     || navBackStackEntry?.destination?.route == "details",
             onClick = { navController.navigate("version") }
