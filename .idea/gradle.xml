@@ -19,7 +19,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/launch" />
             <option value="$PROJECT_DIR$/feature/sample_domain" />
-            <option value="$PROJECT_DIR$/feature/ui" />
+            <option value="$PROJECT_DIR$/feature/sample_ui" />
             <option value="$PROJECT_DIR$/shared" />
             <option value="$PROJECT_DIR$/shared/entity" />
           </set>

@@ -1,4 +1,4 @@
-package com.hyundai.sample.ui
+package com.hyundai.sample.ui.main
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row

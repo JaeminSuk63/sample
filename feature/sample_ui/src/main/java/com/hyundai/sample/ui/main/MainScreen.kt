@@ -1,4 +1,4 @@
-package com.hyundai.sample.ui
+package com.hyundai.sample.ui.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

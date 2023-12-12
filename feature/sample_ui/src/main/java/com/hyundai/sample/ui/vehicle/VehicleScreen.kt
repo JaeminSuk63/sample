@@ -1,38 +1,37 @@
-package com.hyundai.sample.ui
+package com.hyundai.sample.ui.vehicle
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun DetailsScreen(navController: NavController) {
+fun VehicleScreen(viewModel: VehicleViewModel = hiltViewModel()) {
+    val ignitionState by viewModel.ignitionState.collectAsState()
+    val parkingBrakeState by viewModel.parkingBrakeState.collectAsState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 450.dp, top = 100.dp)
+            .padding(start = 450.dp, top = 100.dp),
     ) {
-        TextButton(onClick = {
-            navController.navigateUp()
-        }) {
-            Text(
-                text = "Back",
-                fontSize = 40.sp,
-            )
-        }
+        Text(
+            text = ignitionState ?: "",
+            fontSize = 40.sp
+        )
 
         Spacer(modifier = Modifier.padding(10.dp))
 
         Text(
-            text = "Details Screen",
+            text = parkingBrakeState ?: "",
             fontSize = 40.sp
         )
     }

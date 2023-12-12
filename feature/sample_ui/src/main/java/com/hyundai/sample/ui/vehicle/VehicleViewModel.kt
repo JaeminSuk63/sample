@@ -1,4 +1,4 @@
-package com.hyundai.sample.ui
+package com.hyundai.sample.ui.vehicle
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

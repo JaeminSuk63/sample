@@ -5,10 +5,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.hyundai.sample.launch.LeftNavigation
-import com.hyundai.sample.ui.DetailsScreen
-import com.hyundai.sample.ui.MainScreen
-import com.hyundai.sample.ui.VehicleScreen
-import com.hyundai.sample.ui.VersionScreen
+import com.hyundai.sample.ui.cloud.DetailsScreen
+import com.hyundai.sample.ui.cloud.VersionScreen
+import com.hyundai.sample.ui.main.MainScreen
+import com.hyundai.sample.ui.vehicle.VehicleScreen
 
 @Composable
 fun Navigation() {
