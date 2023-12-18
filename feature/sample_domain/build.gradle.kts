@@ -46,10 +46,10 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
-    implementation(project(mapOf("path" to ":data:repository")))
 
     // Modules
     implementation(project(mapOf("path" to ":shared:entity")))
+    implementation(project(mapOf("path" to ":data:repository")))
 }
 
 // Allow references to generated code

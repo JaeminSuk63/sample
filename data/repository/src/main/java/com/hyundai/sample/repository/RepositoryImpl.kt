@@ -1,5 +1,6 @@
 package com.hyundai.sample.repository
 
+import com.hyundai.sample.entity.SearchHistoryItem
 import com.hyundai.sample.repository.dataSource.LocalSource
 import com.hyundai.sample.repository.dataSource.RemoteSource
 import com.hyundai.sample.repository.dataSource.VehicleSource
@@ -9,10 +10,10 @@ class RepositoryImpl(
     private val remoteSource: RemoteSource,
     private val vehicleSource: VehicleSource,
 ) : Repository {
-    override suspend fun addSearchHistory(item: com.hyundai.sample.entity.SearchHistoryItem) =
+    override suspend fun addSearchHistory(item: SearchHistoryItem) =
         localSource.addSearchHistory(item)
 
-    override suspend fun deleteSearchHistory(item: com.hyundai.sample.entity.SearchHistoryItem) =
+    override suspend fun deleteSearchHistory(item: SearchHistoryItem) =
         localSource.deleteSearchHistory(item)
 
     override fun getSearchHistory() = localSource.getSearchHistory()
