@@ -12,9 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.hyundai.sample.entity.NavConstants.CLOUD
+import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
+import com.hyundai.sample.entity.NavConstants.MAIN
+import com.hyundai.sample.entity.NavConstants.VEHICLE
 
 @Composable
-fun LeftNavigation(
+fun LeftSideNavigation(
     navController: NavController,
     navBackStackEntry: NavBackStackEntry?
 ) {
@@ -25,26 +29,26 @@ fun LeftNavigation(
             .background(MaterialTheme.colorScheme.primary)
             .verticalScroll(enabled = true, state = rememberScrollState())
     ) {
-        NavItem(
+        TabItem(
             label = "Home",
             icon = R.drawable.ic_home,
-            selected = navBackStackEntry?.destination?.route == "main",
-            onClick = { navController.navigate("main") }
+            selected = navBackStackEntry?.destination?.route == MAIN,
+            onClick = { navController.navigate(MAIN) }
         )
 
-        NavItem(
+        TabItem(
             label = "Vehicle",
             icon = R.drawable.ic_car,
-            selected = navBackStackEntry?.destination?.route == "vehicle",
-            onClick = { navController.navigate("vehicle") }
+            selected = navBackStackEntry?.destination?.route == VEHICLE,
+            onClick = { navController.navigate(VEHICLE) }
         )
 
-        NavItem(
+        TabItem(
             label = "Version",
             icon = R.drawable.ic_cloud,
-            selected = navBackStackEntry?.destination?.route == "version"
-                    || navBackStackEntry?.destination?.route == "details",
-            onClick = { navController.navigate("version") }
+            selected = navBackStackEntry?.destination?.route == CLOUD
+                    || navBackStackEntry?.destination?.route == CLOUD_DETAIL,
+            onClick = { navController.navigate(CLOUD) }
         )
     }
 }

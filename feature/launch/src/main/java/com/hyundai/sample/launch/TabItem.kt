@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun NavItem(icon: Int, label: String, selected: Boolean, onClick: () -> Unit) {
+fun TabItem(icon: Int, label: String, selected: Boolean, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

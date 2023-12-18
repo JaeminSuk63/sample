@@ -67,6 +67,7 @@ dependencies {
     // Modules
     implementation(project(mapOf("path" to ":feature:sample_domain")))
     implementation(project(mapOf("path" to ":feature:sample_ui")))
+    implementation(project(mapOf("path" to ":shared:entity")))
 }
 
 // Allow references to generated code

@@ -17,11 +17,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
 import com.hyundai.sample.ui.DefaultTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun VersionScreen(navController: NavController, viewModel: VersionViewModel = hiltViewModel()) {
+fun CloudScreen(navController: NavController, viewModel: VersionViewModel = hiltViewModel()) {
     val apiVersion by viewModel.apiVersion.collectAsState()
 
     Scaffold(
@@ -43,7 +44,7 @@ fun VersionScreen(navController: NavController, viewModel: VersionViewModel = hi
             Spacer(modifier = Modifier.padding(10.dp))
 
             TextButton(onClick = {
-                navController.navigate("details")
+                navController.navigate(CLOUD_DETAIL)
             }) {
                 Text(
                     text = "Go to details",

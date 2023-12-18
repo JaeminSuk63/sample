@@ -17,7 +17,7 @@ import com.hyundai.sample.ui.BackTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsScreen(navController: NavController) {
+fun CloudDetailsScreen(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
