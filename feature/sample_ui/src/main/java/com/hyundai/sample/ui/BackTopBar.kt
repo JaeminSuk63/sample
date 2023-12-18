@@ -21,7 +21,7 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HTopBarBack(navController: NavController) {
+fun BackTopBar(title: String, navController: NavController) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -29,7 +29,7 @@ fun HTopBarBack(navController: NavController) {
         ),
         title = {
             Text(
-                text = "Sample",
+                text = title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 fontSize = 35.sp,

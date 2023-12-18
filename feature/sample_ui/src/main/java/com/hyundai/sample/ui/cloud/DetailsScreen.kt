@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.hyundai.sample.ui.HTopBarBack
+import com.hyundai.sample.ui.BackTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,7 +22,7 @@ fun DetailsScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(start = HSize.ScreenStartPadding),
-        topBar = { HTopBarBack(navController = navController) }
+        topBar = { BackTopBar("Sample", navController) }
     ) { innerPadding ->
 
         Column(

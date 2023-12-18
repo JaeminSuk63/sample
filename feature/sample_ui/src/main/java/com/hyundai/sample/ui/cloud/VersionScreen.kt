@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.hyundai.sample.ui.HTopBarDefault
+import com.hyundai.sample.ui.DefaultTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +28,7 @@ fun VersionScreen(navController: NavController, viewModel: VersionViewModel = hi
         modifier = Modifier
             .fillMaxSize()
             .padding(start = HSize.ScreenStartPadding),
-        topBar = { HTopBarDefault() }
+        topBar = { DefaultTopBar("Sample") }
     ) { innerPadding ->
         Column(
             modifier = Modifier

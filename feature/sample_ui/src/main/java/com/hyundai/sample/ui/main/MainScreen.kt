@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.hyundai.sample.entity.SearchHistoryItem
-import com.hyundai.sample.ui.HTopBarDefault
+import com.hyundai.sample.ui.DefaultTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,7 +30,7 @@ fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
         modifier = Modifier
             .fillMaxSize()
             .padding(start = HSize.ScreenStartPadding),
-        topBar = { HTopBarDefault() }
+        topBar = { DefaultTopBar("Sample") }
     ) { innerPadding ->
         Column(
             modifier = Modifier

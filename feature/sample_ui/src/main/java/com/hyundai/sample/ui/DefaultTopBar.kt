@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HTopBarDefault() {
+fun DefaultTopBar(title: String) {
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -20,7 +20,7 @@ fun HTopBarDefault() {
         ),
         title = {
             Text(
-                text = "Sample",
+                text = title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 fontSize = 35.sp,
