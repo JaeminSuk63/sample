@@ -81,6 +81,10 @@ dependencies {
 
     // Modules
     implementation(project(mapOf("path" to ":feature:launch")))
+    
+    // For repository di
+    implementation(project(mapOf("path" to ":domain:use_case")))
+    implementation(project(mapOf("path" to ":data:repository")))
 }
 
 // Allow references to generated code

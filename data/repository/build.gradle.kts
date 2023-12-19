@@ -60,7 +60,8 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
 
     // Modules
-    implementation(project(mapOf("path" to ":shared:entity")))
+    implementation(project(mapOf("path" to ":domain:use_case")))
+    implementation(project(mapOf("path" to ":domain:entity")))
     implementation(project(mapOf("path" to ":data:api")))
     implementation(project(mapOf("path" to ":data:db")))
 }

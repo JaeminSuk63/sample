@@ -1,26 +1,34 @@
 package com.hyundai.sample.launch
 
 import androidx.lifecycle.ViewModel
-import com.hyundai.sample.domain.UseCases
+import androidx.lifecycle.viewModelScope
+import com.hyundai.sample.usecase.SampleUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LaunchViewModel @Inject constructor(
-    private val useCases: UseCases,
+    private val useCase: SampleUseCase,
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
 
+    private val _errorMessage = MutableStateFlow("")
+    val errorMessage = _errorMessage.asStateFlow()
+
+    var isStartCondition = true
+
     init {
-        _isLoading.value = isLoading()
+        checkStartCondition()
     }
 
-    private fun isLoading(): Boolean {
-        // Check real start condition with useCases
-        return false
+    private fun checkStartCondition() = viewModelScope.launch {
+        _errorMessage.value = "CCS"
+        isStartCondition = true
+        _isLoading.value = false
     }
 }

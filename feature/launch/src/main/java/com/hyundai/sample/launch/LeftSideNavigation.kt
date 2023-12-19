@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.hyundai.sample.entity.NavConstants.CAR
 import com.hyundai.sample.entity.NavConstants.CLOUD
 import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
 import com.hyundai.sample.entity.NavConstants.MAIN
-import com.hyundai.sample.entity.NavConstants.VEHICLE
 
 @Composable
 fun LeftSideNavigation(
@@ -37,14 +37,14 @@ fun LeftSideNavigation(
         )
 
         TabItem(
-            label = "Vehicle",
+            label = "Car",
             icon = R.drawable.ic_car,
-            selected = navBackStackEntry?.destination?.route == VEHICLE,
-            onClick = { navController.navigate(VEHICLE) }
+            selected = navBackStackEntry?.destination?.route == CAR,
+            onClick = { navController.navigate(CAR) }
         )
 
         TabItem(
-            label = "Version",
+            label = "Cloud",
             icon = R.drawable.ic_cloud,
             selected = navBackStackEntry?.destination?.route == CLOUD
                     || navBackStackEntry?.destination?.route == CLOUD_DETAIL,

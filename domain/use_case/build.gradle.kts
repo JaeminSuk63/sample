@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    namespace = "com.hyundai.sample.db"
-    compileSdk = 33
+    namespace = "com.hyundai.sample.domain"
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -47,12 +47,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
-    // Room DB
-    val roomVersion = "2.5.0"
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-
+    // Modules
     implementation(project(mapOf("path" to ":domain:entity")))
 }
 

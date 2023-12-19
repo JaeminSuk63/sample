@@ -63,11 +63,12 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(project(mapOf("path" to ":feature:base")))
+
 
     // Modules
-    implementation(project(mapOf("path" to ":feature:sample_domain")))
-    implementation(project(mapOf("path" to ":feature:sample_ui")))
-    implementation(project(mapOf("path" to ":shared:entity")))
+    implementation(project(mapOf("path" to ":domain:entity")))
+    implementation(project(mapOf("path" to ":domain:use_case")))
 }
 
 // Allow references to generated code

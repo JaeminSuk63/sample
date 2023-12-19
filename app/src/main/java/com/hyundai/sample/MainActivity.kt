@@ -6,8 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.hyundai.sample.base.theme.SampleTheme
+import com.hyundai.sample.launch.LaunchScreen
 import com.hyundai.sample.launch.LaunchViewModel
-import com.hyundai.sample.ui.theme.SampleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SampleTheme {
-                Navigation()
+                if (viewModel.isStartCondition) Navigation() else LaunchScreen()
             }
         }
     }
