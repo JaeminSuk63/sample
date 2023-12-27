@@ -1,6 +1,5 @@
 package com.hyundai.sample.base.cloud
 
-import HSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
 import com.hyundai.sample.base.DefaultTopBar
+import com.hyundai.sample.base.HSize
+import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

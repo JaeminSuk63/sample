@@ -1,3 +1,5 @@
+package com.hyundai.sample.launch
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
@@ -12,7 +14,6 @@ import com.hyundai.sample.entity.NavConstants.CAR
 import com.hyundai.sample.entity.NavConstants.CLOUD
 import com.hyundai.sample.entity.NavConstants.CLOUD_DETAIL
 import com.hyundai.sample.entity.NavConstants.MAIN
-import com.hyundai.sample.launch.LeftSideNavigation
 
 @Composable
 fun Navigation() {

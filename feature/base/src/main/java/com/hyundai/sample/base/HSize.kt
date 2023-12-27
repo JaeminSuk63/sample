@@ -1,3 +1,5 @@
+package com.hyundai.sample.base
+
 import androidx.compose.ui.unit.dp
 
 object HSize {

@@ -12,7 +12,6 @@ android {
     defaultConfig {
         applicationId = "com.hyundai.sample"
         minSdk = 24
-        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -73,15 +72,16 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.5.3")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    val hiltVersion = "2.48"
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     // Splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Modules
     implementation(project(mapOf("path" to ":feature:launch")))
-    
+
     // For repository di
     implementation(project(mapOf("path" to ":domain:use_case")))
     implementation(project(mapOf("path" to ":data:repository")))

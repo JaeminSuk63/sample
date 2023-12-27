@@ -1,4 +1,4 @@
-package com.hyundai.sample.base.theme
+package com.hyundai.sample.ui.theme
 
 import android.app.Activity
 import android.os.Build

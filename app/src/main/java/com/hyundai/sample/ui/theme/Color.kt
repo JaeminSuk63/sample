@@ -1,4 +1,4 @@
-package com.hyundai.sample.base.theme
+package com.hyundai.sample.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

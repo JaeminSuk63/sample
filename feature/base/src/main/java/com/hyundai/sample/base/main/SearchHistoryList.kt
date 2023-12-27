@@ -16,13 +16,14 @@ import androidx.compose.ui.unit.sp
 import com.hyundai.sample.entity.SearchHistoryItem
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 @Composable
 fun SearchHistoryList(
     items: List<SearchHistoryItem>,
     onDeleteItem: (SearchHistoryItem) -> Unit
 ) {
-    val pattern = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val pattern = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA)
 
     LazyColumn(
         modifier = Modifier.fillMaxSize()

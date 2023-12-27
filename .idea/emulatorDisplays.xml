@@ -9,8 +9,8 @@
               <option name="displayDescriptors">
                 <list>
                   <DisplayDescriptor>
-                    <option name="height" value="720" />
-                    <option name="width" value="1920" />
+                    <option name="height" value="1920" />
+                    <option name="width" value="720" />
                   </DisplayDescriptor>
                   <DisplayDescriptor>
                     <option name="displayId" value="6" />
@@ -23,8 +23,7 @@
                 <EmulatorPanelState>
                   <option name="splitPanel">
                     <SplitPanelState>
-                      <option name="proportion" value="0.9965870380401611" />
-                      <option name="splitType" value="VERTICAL" />
+                      <option name="proportion" value="0.8190789222717285" />
                       <option name="firstComponent">
                         <EmulatorPanelState>
                           <option name="displayId" value="0" />
